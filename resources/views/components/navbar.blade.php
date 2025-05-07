@@ -1,6 +1,7 @@
 <nav class="bg-gradient-to-r from-blue-700 to-blue-900 p-4 flex justify-between items-center text-white shadow-md">
     <div class="flex items-center space-x-3">
-        <img src="../public/Logo KLA.png" alt="Logo" class="rounded-full">
+        <img src="{{ asset('assets/img/LogoKKLA.png') }}" alt="Logo" class="w-12 my-2 drop-shadow-lg">
+
         <h1 class="text-xl font-bold">Evaluasi SIPANDAKABULAN</h1>
     </div>
 
