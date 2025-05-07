@@ -25,7 +25,7 @@
                 <label for="role" class="block mb-1 font-semibold text-gray-700">Hak Akses</label>
                 <select id="role" name="role" required
                     class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <option value="Operator">Operator</option>
+                    <option value="Operator">Operator</option>5
                     <option value="Verifikator">Verifikator Administrasi</option>
                 </select>
             </div>
@@ -67,7 +67,7 @@
         <p>Juknis 2023: <a href="#" class="font-bold text-blue-600 hover:underline">download-kepmenjuknik2023</a>
         </p>
         <p class="text-red-600 font-semibold mt-4">
-            Jika mengalami masalah username atau password, silakan email ke <br> cs@evaluasikla.id
+            Jika mengalami masalah username atau password, silakan email ke cs @evaluasikla.id
         </p>
     </div>
 
