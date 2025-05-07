@@ -8,7 +8,7 @@ Route::get('/', function () {
 })->name('login');
 
 
-Route::get('/app', function () {
-    return view('app');
+Route::get('/dashboard', function () {
+    return view('layouts.dashboard');
 });
 
