@@ -25,10 +25,11 @@
                 <label for="role" class="block mb-1 font-semibold text-gray-700">Hak Akses</label>
                 <select id="role" name="role" required
                     class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <option value="Operator">Operator</option>5
-                    <option value="Verifikator">Verifikator Administrasi</option>
+                    <option value="operator">Operator</option>5
+                    <option value="admin">Verifikator Administrasi</option>
                 </select>
             </div>
+            
 
             <div>
                 <label for="email" class="block mb-1 font-semibold text-gray-700">Email</label>
