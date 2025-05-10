@@ -8,11 +8,7 @@
 <body class="bg-gray-100 min-h-screen flex flex-col">
 
     <!-- Navbar -->
-    <header class="bg-blue-900 text-white p-4">
-        <div class="container mx-auto">
-            <h1 class="text-xl font-bold">Dashboard SIPANDAKABULAN</h1>
-        </div>
-    </header>
+    <x-navbar></x-navbar>
 
     <!-- Main Content -->
     <main class="flex-1 container mx-auto p-6">
