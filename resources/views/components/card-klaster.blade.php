@@ -39,10 +39,11 @@
                         <span class="bg-gray-700 text-white px-2 py-1 rounded-full font-semibold">Maks
                             {{ $poin['maksimal'] }}</span>
                     </div>
-                    <a href="{{ route('form.show', $poin['id']) }}"
+                    <a href="{{ route('form.show', $poin->id) }}"
                         class="inline-block bg-sky-500 hover:bg-sky-600 text-white px-4 py-1 rounded-full text-xs font-semibold transition">
                         Proses
                     </a>
+
                 </div>
             </div>
         @empty
