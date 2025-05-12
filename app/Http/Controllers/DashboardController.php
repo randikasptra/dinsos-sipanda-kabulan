@@ -54,6 +54,56 @@ class DashboardController extends Controller
                         'maksimal' => '96.00',
                         'link' => '#',
                     ],
+                ],
+            ],
+            [
+                'id' => 'Klaster II: Hak Sipil dan Kebebasan',
+                'title' => 'Klaster I: Hak Sipil dan Kebebasan',
+                'nilai_em' => 146.00,
+                'nilai_maksimal' => 164.00,
+                'progres' => 100,
+                'sub_poin' => [
+                    [
+                        'judul' => 'Peraturan Daerah tentang SIPANDAKABULAN',
+                        'terpenuhi' => '[4/4]',
+                        'nilai' => '88.00',
+                        'maksimal' => '96.00',
+                        'link' => '#',
+                    ],
+                    // ...poin lainnya
+                ],
+            ],
+            [
+                'id' => 'Klaster II: Hak Sipil dan Kebebasan',
+                'title' => 'Klaster I: Hak Sipil dan Kebebasan',
+                'nilai_em' => 146.00,
+                'nilai_maksimal' => 164.00,
+                'progres' => 100,
+                'sub_poin' => [
+                    [
+                        'judul' => 'Peraturan Daerah tentang SIPANDAKABULAN',
+                        'terpenuhi' => '[4/4]',
+                        'nilai' => '88.00',
+                        'maksimal' => '96.00',
+                        'link' => '#',
+                    ],
+                    // ...poin lainnya
+                ],
+            ],
+            [
+                'id' => 'Klaster II: Hak Sipil dan Kebebasan',
+                'title' => 'Klaster I: Hak Sipil dan Kebebasan',
+                'nilai_em' => 146.00,
+                'nilai_maksimal' => 164.00,
+                'progres' => 100,
+                'sub_poin' => [
+                    [
+                        'judul' => 'Peraturan Daerah tentang SIPANDAKABULAN',
+                        'terpenuhi' => '[4/4]',
+                        'nilai' => '88.00',
+                        'maksimal' => '96.00',
+                        'link' => '#',
+                    ],
                     // ...poin lainnya
                 ],
             ],
