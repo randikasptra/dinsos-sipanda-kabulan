@@ -10,12 +10,8 @@ Route::get('/', function () {
 })->name('login');
 
 
-Route::get('/dashboard', function () {
-    return view('layouts.dashboard');
-});
-
-
 Route::get('/form/{id}', [FormController::class, 'show'])->name('form.show');
 Route::post('/form/{id}', [FormController::class, 'store'])->name('form.store');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
