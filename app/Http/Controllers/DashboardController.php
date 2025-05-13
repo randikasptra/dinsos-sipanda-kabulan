@@ -3,130 +3,41 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Klaster;
+use App\Models\Poin;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        $klasters = [
-            [
-                'id' => 'kelembagaan',
-                'title' => 'Kelembagaan',
-                'nilai_em' => 146.00,
-                'nilai_maksimal' => 164.00,
-                'progres' => 100,
-                'sub_poin' => [
-                    [
-                        'judul' => 'Peraturan Daerah tentang SIPANDAKABULAN',
-                        'terpenuhi' => '[4/4]',
-                        'nilai' => '88.00',
-                        'maksimal' => '96.00',
-                        'link' => '#',
-                    ],
-                    [
-                        'judul' => 'Penguatan Kelembagaan',
-                        'terpenuhi' => '[4/4]',
-                        'nilai' => '88.00',
-                        'maksimal' => '96.00',
-                        'link' => '#',
-                    ],
-                    [
-                        'judul' => 'Peran Dunia Usaha dan Media',
-                        'terpenuhi' => '[4/4]',
-                        'nilai' => '88.00',
-                        'maksimal' => '96.00',
-                        'link' => '#',
-                    ],
-                    // ...poin lainnya
-                ],
-            ],
-            [
-                'id' => 'Klaster I: Hak Sipil dan Kebebasan',
-                'title' => 'Klaster I: Hak Sipil dan Kebebasan',
-                'nilai_em' => 146.00,
-                'nilai_maksimal' => 164.00,
-                'progres' => 100,
-                'sub_poin' => [
-                    [
-                        'judul' => 'Peraturan Daerah tentang SIPANDAKABULAN',
-                        'terpenuhi' => '[4/4]',
-                        'nilai' => '88.00',
-                        'maksimal' => '96.00',
-                        'link' => '#',
-                    ],
-                ],
-            ],
-            [
-                'id' => 'Klaster II: Hak Sipil dan Kebebasan',
-                'title' => 'Klaster I: Hak Sipil dan Kebebasan',
-                'nilai_em' => 146.00,
-                'nilai_maksimal' => 164.00,
-                'progres' => 100,
-                'sub_poin' => [
-                    [
-                        'judul' => 'Peraturan Daerah tentang SIPANDAKABULAN',
-                        'terpenuhi' => '[4/4]',
-                        'nilai' => '88.00',
-                        'maksimal' => '96.00',
-                        'link' => '#',
-                    ],
-                    // ...poin lainnya
-                ],
-            ],
-            [
-                'id' => 'Klaster II: Hak Sipil dan Kebebasan',
-                'title' => 'Klaster I: Hak Sipil dan Kebebasan',
-                'nilai_em' => 146.00,
-                'nilai_maksimal' => 164.00,
-                'progres' => 100,
-                'sub_poin' => [
-                    [
-                        'judul' => 'Peraturan Daerah tentang SIPANDAKABULAN',
-                        'terpenuhi' => '[4/4]',
-                        'nilai' => '88.00',
-                        'maksimal' => '96.00',
-                        'link' => '#',
-                    ],
-                    // ...poin lainnya
-                ],
-            ],
-            [
-                'id' => 'Klaster II: Hak Sipil dan Kebebasan',
-                'title' => 'Klaster I: Hak Sipil dan Kebebasan',
-                'nilai_em' => 146.00,
-                'nilai_maksimal' => 164.00,
-                'progres' => 100,
-                'sub_poin' => [
-                    [
-                        'judul' => 'Peraturan Daerah tentang SIPANDAKABULAN',
-                        'terpenuhi' => '[4/4]',
-                        'nilai' => '88.00',
-                        'maksimal' => '96.00',
-                        'link' => '#',
-                    ],
-                    // ...poin lainnya
-                ],
-            ],
-            [
-                'id' => 'Klaster II: Hak Sipil dan Kebebasan',
-                'title' => 'Klaster I: Hak Sipil dan Kebebasan',
-                'nilai_em' => 146.00,
-                'nilai_maksimal' => 164.00,
-                'progres' => 100,
-                'sub_poin' => [
-                    [
-                        'judul' => 'Peraturan Daerah tentang SIPANDAKABULAN',
-                        'terpenuhi' => '[4/4]',
-                        'nilai' => '88.00',
-                        'maksimal' => '96.00',
-                        'link' => '#',
-                    ],
-                    // ...poin lainnya
-                ],
-            ],
-            // ...klaster lainnya
-        ];
+        // Ambil semua klaster beserta relasi poin-nya
+        $klasters = Klaster::with('poin')->get();
 
-        return view('pages.dashboard', compact('klasters'));
+        // Format data untuk ditampilkan di dashboard
+        $formatted = $klasters->map(function ($klaster) {
+            $totalMaksimal = $klaster->poin->sum('nilai_maksimal') ?: 1;
+            $totalNilai = $klaster->poin->sum('nilai');
+            $progres = ($totalNilai / $totalMaksimal) * 100;
+
+            return [
+                'id' => $klaster->id,
+                'title' => $klaster->nama,
+                'nilai_em' => $totalNilai,
+                'nilai_maksimal' => $totalMaksimal,
+                'progres' => round($progres, 2),
+                'sub_poin' => $klaster->poin->map(function ($poin) {
+                    return [
+                        'id' => $poin->id,
+                        'judul' => $poin->judul,
+                        'nilai' => $poin->nilai,
+                        'maksimal' => $poin->nilai_maksimal,
+                        'terpenuhi' => "[{$poin->terpenuhi}/{$poin->total}]",
+                    ];
+                })->toArray()
+            ];
+        })->toArray();
+
+        // Kirim ke view
+        return view('pages.dashboard', ['klasters' => $formatted]);
     }
 }

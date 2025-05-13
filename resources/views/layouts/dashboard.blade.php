@@ -12,7 +12,7 @@
     <!-- Navbar -->
     <x-navbar></x-navbar>
 
-    <!-- Main Content -->
+
     <div class="bg-white p-6 rounded-lg shadow-md flex flex-col md:flex-row justify-between items-center mb-8">
         <div>
             <h2 class="text-2xl font-bold mb-2">Selamat Datang, Kabupaten Tasikmalaya!</h2>
@@ -27,19 +27,28 @@
         </div>
     </div>
 
-    {{-- Card --}}
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 px-5">
+        <x-card-klaster />
+        <x-card-klaster />
+        <x-card-klaster />
+        <x-card-klaster />
+        <x-card-klaster />
+        <x-card-klaster />
+        <x-card-klaster />
+    </div>
+
+    <!-- Main Content -->
     <main class="flex-1 container mx-auto p-6">
         @yield('content')
     </main>
 
+
     <!-- Footer -->
-    <footer class="bg-blue-900 text-white text-center p-4">
-        <p class="text-sm">&copy; 2025 Kabupaten Tasikmalaya | SIPANDAKABULAN</p>
-    </footer>
+    <x-footer></x-footer>
 
     @stack('scripts')
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </body>
 
 </html>

@@ -1,34 +1,40 @@
-<nav class="bg-gradient-to-r from-blue-700 to-blue-900 p-2 flex justify-between items-center text-white shadow-md">
-    <div class="flex items-center space-x-3">
-        <img src="{{ asset('assets/img/LogoKKLA.png') }}" alt="Logo" class="w-12 drop-shadow-lg">
+<nav x-data="{ open: false }" class="bg-gradient-to-r from-blue-700 to-blue-900 px-4 py-3 shadow-md text-white">
+    <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <img src="{{ asset('assets/img/LogoKKLA.png') }}" alt="Logo" class="w-10 h-10">
+            <h1 class="text-lg md:text-xl font-bold tracking-wide">Evaluasi SIPANDAKABULAN</h1>
+        </div>
 
-        <h1 class="text-xl font-bold">Evaluasi SIPANDAKABULAN</h1>
-    </div>
+        <!-- Menu Desktop -->
+        <div class="hidden md:flex space-x-6 items-center">
+            <a href="#" class="hover:underline hover:text-sky-200 transition">Info</a>
+            <a href="#" class="hover:underline hover:text-sky-200 transition">Pengumuman</a>
+            <a href="#" class="hover:underline hover:text-sky-200 transition">Tutorial</a>
+            <a href="#" class="hover:underline hover:text-sky-200 transition">Dokumen</a>
+            <a href="#" class="hover:underline hover:text-sky-200 transition">Kontak</a>
+            <a href="#"
+                class="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-full text-sm font-semibold transition">Logout</a>
+        </div>
 
-    <div class="space-x-6 hidden md:flex">
-        <a href="#" class="hover:underline">Info</a>
-        <a href="#" class="hover:underline">Pengumuman</a>
-        <a href="#" class="hover:underline">Tutorial</a>
-        <a href="#" class="hover:underline">Dokumen</a>
-        <a href="#" class="hover:underline">Kontak</a>
-        <a href="#" class="bg-red-500 hover:bg-red-600 text-white py-auto px-4 rounded-full">Logout</a>
-    </div>
-
-    <div class="md:hidden flex items-center">
-        <button id="menu-toggle" class="text-white focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+        <!-- Hamburger -->
+        <button class="md:hidden focus:outline-none" @click="open = !open">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
         </button>
     </div>
-</nav>
 
-<div id="mobile-menu" class="md:hidden hidden bg-gradient-to-r from-blue-700 to-blue-900 p-4 space-y-4 text-white">
-    <a href="#" class="hover:underline">Info</a>
-    <a href="#" class="hover:underline">Pengumuman</a>
-    <a href="#" class="hover:underline">Tutorial</a>
-    <a href="#" class="hover:underline">Dokumen</a>
-    <a href="#" class="hover:underline">Kontak</a>
-    <a href="#" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full">Logout</a>
-</div>
+    <!-- Menu Mobile -->
+    <div x-data="{ open: false }">
+        <div x-show="open" x-transition class="md:hidden bg-blue-800 px-4 pt-4 pb-6 space-y-3 text-sm">
+            <a href="#" class="block text-white hover:underline">Info</a>
+            <a href="#" class="block text-white hover:underline">Pengumuman</a>
+            <a href="#" class="block text-white hover:underline">Tutorial</a>
+            <a href="#" class="block text-white hover:underline">Dokumen</a>
+            <a href="#" class="block text-white hover:underline">Kontak</a>
+            <a href="#"
+                class="block bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-center font-medium">Logout</a>
+        </div>
+    </div>
+</nav>
