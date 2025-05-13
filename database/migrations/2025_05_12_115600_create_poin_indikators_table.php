@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('poin_indikators', function (Blueprint $table) {
+        Schema::create('poins', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('klaster_id')->constrained()->onDelete('cascade');
+            $table->string('judul');
+            $table->text('pertanyaan')->nullable();
+            $table->decimal('nilai_maksimal', 8, 2)->default(0);
             $table->timestamps();
         });
     }
