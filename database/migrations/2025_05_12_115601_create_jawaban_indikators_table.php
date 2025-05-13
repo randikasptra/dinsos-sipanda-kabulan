@@ -11,8 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jawaban_indikators', function (Blueprint $table) {
+        Schema::create('jawaban_poin', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('poin_id')->constrained()->onDelete('cascade');
+            $table->string('jawaban')->nullable();
+            $table->text('catatan')->nullable();
+            $table->string('lampiran')->nullable(); // path file
+            $table->decimal('nilai', 8, 2)->default(0);
             $table->timestamps();
         });
     }
