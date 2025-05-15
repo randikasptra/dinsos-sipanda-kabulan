@@ -13,4 +13,5 @@ class Klaster extends Model
     {
         return $this->hasMany(Poin::class);
     }
+    
 }
