@@ -28,8 +28,6 @@
     </div>
 
     
-
-
     <!-- Main Content -->
     <main class="flex-1 container mx-auto p-6">
         @yield('content')
