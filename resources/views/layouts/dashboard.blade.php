@@ -27,15 +27,7 @@
         </div>
     </div>
 
-    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 px-5">
-        <x-card-klaster />
-        <x-card-klaster />
-        <x-card-klaster />
-        <x-card-klaster />
-        <x-card-klaster />
-        <x-card-klaster />
-        <x-card-klaster />
-    </div>
+
 
     <!-- Main Content -->
     <main class="flex-1 container mx-auto p-6">
