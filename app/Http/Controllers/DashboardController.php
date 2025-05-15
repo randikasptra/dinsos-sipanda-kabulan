@@ -37,6 +37,7 @@ class DashboardController extends Controller
         })->toArray();
 
         // Kirim ke view
-        return view('pages.dashboard', compact('formatted'));
+        return view('pages.dashboard', ['klasters' => $formatted]);
+
     }
 }
