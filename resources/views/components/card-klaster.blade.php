@@ -1,7 +1,7 @@
 @props(['id', 'title', 'nilaiEm', 'nilaiMaksimal', 'progres', 'subPoin'])
 
 <div x-data="{ open: false }"
-    class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+    class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 ">
 
     <!-- Header -->
     <button @click="open = !open"
