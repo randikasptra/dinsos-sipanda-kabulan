@@ -18,7 +18,9 @@ return new class extends Migration
             $table->decimal('nilai', 8, 2)->default(0);
             $table->decimal('nilai_maksimal', 8, 2)->default(0);
             $table->string('terpenuhi')->nullable(); // misal: 4/4
+            $table->integer('total')->default(0);
             $table->timestamps();
+
         });
     }
 
