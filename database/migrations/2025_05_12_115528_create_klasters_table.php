@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('klasters', function (Blueprint $table) {
             $table->id();
+            $table->string('nama'); // nama klaster (contoh: Kelembagaan, Klaster I, dst)
             $table->timestamps();
         });
     }
