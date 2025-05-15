@@ -13,9 +13,18 @@ return new class extends Migration
     {
         Schema::create('poins', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('klaster_id'); // foreign key ke klasters
+            $table->string('judul');                 // nama poin
+            $table->integer('nilai')->default(0);    // nilai saat ini
+            $table->integer('nilai_maksimal');       // nilai maksimal
+            $table->integer('terpenuhi')->default(0); // jumlah indikator terpenuhi
+            $table->integer('total')->default(0);     // jumlah total indikator
             $table->timestamps();
+
+            $table->foreign('klaster_id')->references('id')->on('klasters')->onDelete('cascade');
         });
     }
+
 
     /**
      * Reverse the migrations.
