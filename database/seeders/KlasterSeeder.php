@@ -1,13 +1,12 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use App\Models\Klaster;
-use App\Models\Poin;
 
 class KlasterSeeder extends Seeder
 {
-
-
     public function run(): void
     {
         $data = [
