@@ -8,21 +8,16 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    
+    /**
+     * Seed the application's database.
+     */
     public function run(): void
     {
-        $data = [
-            'Kelembagaan',
-            'Klaster I: Hak Sipil dan Kebebasan',
-            'Klaster II: Lingkungan Keluarga',
-            'Klaster III: Kesehatan Dasar dan Kesejahteraan',
-            'Klaster IV: Pendidikan, Waktu Luang, Budaya',
-            'Klaster V: Perlindungan Khusus',
-            'Penyelenggaraan KLA di Kecamatan/Desa',
-        ];
+        // User::factory(10)->create();
 
-        foreach ($data as $item) {
-            Klaster::create(['nama' => $item]);
-        }
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+        ]);
     }
 }
