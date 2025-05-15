@@ -10,8 +10,7 @@ class DashboardController extends Controller
     public function index()
     {
         // Ambil semua klaster beserta relasi poin-nya
-        Klaster::with('poin')->get();
-
+        $klasters = Klaster::with('poin')->get();
 
         // Format data untuk ditampilkan di dashboard
         $formatted = $klasters->map(function ($klaster) {
