@@ -7,12 +7,11 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+
     public function index()
     {
-        // Ambil semua klaster beserta relasi poin-nya
         $klasters = Klaster::with('poin')->get();
 
-        // Format data untuk ditampilkan di dashboard
         $formatted = $klasters->map(function ($klaster) {
             $totalMaksimal = $klaster->poin->sum('nilai_maksimal') ?: 1;
             $totalNilai = $klaster->poin->sum('nilai');
@@ -28,16 +27,17 @@ class DashboardController extends Controller
                     return [
                         'id' => $poin->id,
                         'judul' => $poin->judul,
-                        'nilai' => round($poin->nilai, 2),
-                        'maksimal' => round($poin->nilai_maksimal, 2),
+                        'nilai' => $poin->nilai,
+                        'maksimal' => $poin->nilai_maksimal,
                         'terpenuhi' => "[{$poin->terpenuhi}/{$poin->total}]",
                     ];
-                })->toArray()
+                })->toArray(),
             ];
-        })->toArray();
+        });
+        
 
-        // Kirim ke view
+
         return view('pages.dashboard', ['klasters' => $formatted]);
-
     }
+    
 }
