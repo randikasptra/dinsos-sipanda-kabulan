@@ -28,11 +28,16 @@ class AuthenticatedSessionController extends Controller
         $request->validate([
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
+            'role' => ['required', 'string', 'in:admin,operator'],
         ]);
 
-        if (!Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
-            return back()->withErrors(['email' => 'Login gagal']);
+        if (!Auth::attempt($request->only('email', 'password') + ['role' => $request->input('role')], $request->filled('remember'))) {
+            return back()->withErrors([
+                'email' => 'Email atau password salah atau role tidak cocok.',
+            ])->onlyInput('email');
         }
+
+
 
         $request->session()->regenerate();
 
