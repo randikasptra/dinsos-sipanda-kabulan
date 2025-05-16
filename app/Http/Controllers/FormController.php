@@ -12,7 +12,8 @@ class FormController extends Controller
     public function show($id)
     {
         // Ambil data poin dari database (misal tabel 'poin')
-        $poin = DB::table('poin')->where('id', $id)->first();
+        $poin = DB::table('poins')->where('id', $id)->first();
+
 
         // Jika tidak ditemukan
         if (!$poin) {

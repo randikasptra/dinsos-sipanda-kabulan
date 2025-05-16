@@ -15,12 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('klaster_id')->constrained()->onDelete('cascade');
             $table->string('judul');
-            $table->decimal('nilai', 8, 2)->default(0);
-            $table->decimal('nilai_maksimal', 8, 2)->default(0);
-            $table->string('terpenuhi')->nullable(); // misal: 4/4
+            $table->integer('nilai')->default(0);
+            $table->integer('nilai_maksimal');
+            $table->integer('terpenuhi')->default(0);
             $table->integer('total')->default(0);
             $table->timestamps();
-
         });
     }
 
