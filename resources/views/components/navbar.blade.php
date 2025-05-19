@@ -12,17 +12,22 @@
             <a href="#" class="hover:underline hover:text-sky-200 transition">Tutorial</a>
             <a href="#" class="hover:underline hover:text-sky-200 transition">Dokumen</a>
             <a href="#" class="hover:underline hover:text-sky-200 transition">Kontak</a>
-            <a href="#"
-                class="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-full text-sm font-semibold transition">Logout</a>
+            <form method="POST" action="{{ route('logout') }}" class="inline">
+                @csrf
+                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded-full text-sm">
+                    Logout
+                </button>
+            </form>
         </div>
+    </div>
 
-        <!-- Hamburger -->
-        <button class="md:hidden focus:outline-none" @click="open = !open">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-        </button>
+    <!-- Hamburger -->
+    <button class="md:hidden focus:outline-none" @click="open = !open">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+    </button>
     </div>
 
     <!-- Menu Mobile -->
@@ -33,8 +38,12 @@
             <a href="#" class="block text-white hover:underline">Tutorial</a>
             <a href="#" class="block text-white hover:underline">Dokumen</a>
             <a href="#" class="block text-white hover:underline">Kontak</a>
-            <a href="#"
-                class="block bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-center font-medium">Logout</a>
+            <form method="POST" action="{{ route('logout') }}" class="inline">
+                @csrf
+                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded-full text-sm">
+                    Logout
+                </button>
+            </form>
         </div>
     </div>
 </nav>

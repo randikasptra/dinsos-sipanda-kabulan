@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
+/*************  ✨ Windsurf Command 🌟  *************/
     public function run(): void
     {
         // Admin
@@ -26,4 +27,5 @@ class UserSeeder extends Seeder
             'role' => 'operator',
         ]);
     }
+/*******  0c88fe3b-5498-42d9-b5bf-a2ffeb5866e5  *******/
 }
