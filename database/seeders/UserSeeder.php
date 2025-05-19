@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
-/*************  ✨ Windsurf Command 🌟  *************/
     public function run(): void
     {
         // Admin
