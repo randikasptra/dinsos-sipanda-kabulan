@@ -17,8 +17,14 @@ class FormController extends Controller
             abort(404, 'Poin tidak ditemukan.');
         }
 
-        return view('form', compact('poin'));
+        // Soal & file matriks khusus untuk klaster tertentu
+        $pertanyaan = "Adanya Peraturan yang mencakup lima klaster (Total Nilai 60)";
+        $opsi = ['Tidak Ada', '>= 2–3 SK', '>= 4 SK'];
+        $fileMatriks = 'matriks/kelembagaan.xlsx'; // simpan di public/matriks/
+
+        return view('pages.form', compact('poin', 'pertanyaan', 'opsi', 'fileMatriks'));
     }
+
 
     public function store(Request $request, $id)
     {
