@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-gradient-to-r from-blue-700 to-blue-900 px-4 py-3 shadow-md text-white">
+<nav x-data="{ open: false }" class="bg-gradient-to-r from-blue-700 to-blue-900 px-4 py-3 shadow-md text-white sticky top-0">
     <div class="container mx-auto flex justify-between items-center">
         <div class="flex items-center space-x-3">
             <img src="{{ asset('assets/img/LogoKKLA.png') }}" alt="Logo" class="w-10 h-10">
