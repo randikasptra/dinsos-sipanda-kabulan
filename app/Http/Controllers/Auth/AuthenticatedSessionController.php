@@ -12,7 +12,7 @@ use App\Providers\RouteServiceProvider;
 class AuthenticatedSessionController extends Controller
 {
     /**
-     * Display the login view.
+     * Tampilkan halaman login.
      */
     public function create(): View
     {
@@ -20,18 +20,18 @@ class AuthenticatedSessionController extends Controller
     }
 
     /**
-     * Handle an incoming authentication request.
+     * Proses login user.
      */
     public function store(Request $request): RedirectResponse
     {
-        // Validasi input login, termasuk role
+        // Validasi input login
         $request->validate([
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string'],
             'role' => ['required', 'string', 'in:admin,operator'],
         ]);
 
-        // Cek login dengan email, password, dan role
+        // Proses login (cek email, password, dan role)
         if (!Auth::attempt(
             $request->only('email', 'password') + ['role' => $request->input('role')],
             $request->filled('remember')
@@ -44,35 +44,26 @@ class AuthenticatedSessionController extends Controller
         // Regenerasi session agar aman
         $request->session()->regenerate();
 
+        // Redirect berdasarkan role
         $user = Auth::user();
 
-        // Redirect berdasarkan role user
         if ($user->role === 'admin') {
             return redirect()->intended('/admin/dashboard');
         }
 
-        // Untuk operator dan role lain, redirect ke HOME (bisa kamu sesuaikan)
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->intended(RouteServiceProvider::HOME); // biasanya ke /dashboard
     }
 
     /**
-     * Destroy an authenticated session.
+     * Logout user.
      */
-    public function destroy(Request $request)
+    public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
-        // Cek user sudah logout
-        if (!Auth::check()) {
-            // user sudah logout
-            return redirect('/login');
-        } else {
-            // user masih login
-            return redirect('/dashboard');
-        }
+        return redirect('/login');
     }
 }
