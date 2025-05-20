@@ -1,12 +1,10 @@
-<?php
-
+<?php 
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
-class RedirectIfNotAdmin
+class AdminMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
@@ -17,3 +15,4 @@ class RedirectIfNotAdmin
         return $next($request);
     }
 }
+?>

@@ -8,13 +8,11 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 // Authenticated users (Operator/Umum)
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     // Form
     Route::get('/form/{id}', [FormController::class, 'show'])->name('form.show');
@@ -27,10 +25,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 // Admin routes
-Route::get('/admin/dashboard', [AdminController::class, 'index'])
-    ->middleware(['auth', 'admin'])
-    ->name('admin.dashboard');
-    
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+});
+
+
 
 // Logout route (boleh di luar semua group)
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
