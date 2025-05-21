@@ -37,7 +37,9 @@ class DashboardController extends Controller
         
 
 
-        return view('pages.dashboard', ['klasters' => $formatted]);
+        // return view('pages.dashboard', ['klasters' => $formatted]);
+        return view('pages.user.dashboard', ['klasters' => $formatted]);
+
     }
     
 }
